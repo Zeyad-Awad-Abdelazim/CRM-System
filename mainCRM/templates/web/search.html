@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<hr style="border-top: 3px solid #000; margin: 30px 180px;">
+
+<div class="text-center">
+    <h3>Search Results for: <strong>{{ query }}</strong></h3>
+</div>
+
+<hr style="border-top: 3px solid #000; margin: 30px 180px;">
+
+<div class="text-center" style="padding: 20px 80px 20px 80px;">
+    <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#ID</th>
+          <th scope="col">First-Name</th>
+          <th scope="col">Last-Name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Hight</th>
+          <th scope="col">Weight</th>
+          <th scope="col">Address</th>
+          <th scope="col">Creation Date</th>
+          <th scope="col">View</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if results  %}
+        {% for record in results %}
+        <tr>
+            <td>{{record.id}}</td>
+            <td>{{record.f_name}}</td>
+            <td>{{record.l_name}}</td>
+            <td>{{record.category}}</td>
+            <td>{{record.phone}}</td>
+            <td>{{record.tall}}</td>
+            <td>{{record.width}}</td>
+            <td>{{record.addres}}</td>
+            <td>{{record.created_at}}</td>
+            <td><a href="{% url 'view_record' record.id %}" class="btn btn-outline-primary text-white btn-sm">view</a></td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="10" class="text-center fs-3">
+              <div class="alert alert-info" role="alert">
+                Query "{{ query }}" returned no results.
+              </div>
+            </td>
+        </tr>
+        {% endif %}
+    </tbody>
+</table>
+<a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg" style="padding: 20px 80px 20px 80px;">Back to Dashboard</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+&nbsp;
+    <div class="cart">
+        <hr style="border-top: 3px solid #000; margin: 30px 180px;">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="mb-0">Record Details for:
+                     <strong><i class="fa fa-user-circle-o" aria-hidden="true"></i>{{ record.f_name }} {{ record.l_name }}</strong>
+                </h2>
+                <div>
+                    <a href="{% url 'update_record' record.id %}" class="btn btn-primary me-2 mt-1">Update Info <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    <a href="{% url 'delete_record' record.id %}" onclick="return confirm('Confirm deleting ...')" class="btn btn-danger mt-1">Delete <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr style="border-top: 3px solid #000; margin: 30px 180px;">
+
+        <div class="text-center" style="padding: 20px 140px 20px 140px;">
+            <table class="table table-striped table-dark fs-4">
+                <tbody>
+                    <tr>
+                        <th scope="row">ID</th>
+                        <td>{{ record.id }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">First Name</th>
+                        <td>{{ record.f_name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Last Name</th>
+                        <td>{{ record.l_name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Category</th>
+                        <td>{{ record.category }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Phone</th>
+                        <td>{{ record.phone }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Height</th>
+                        <td>{{ record.tall }}</td> <!-- Corrected field name -->
+                    </tr>
+                    <tr>
+                        <th scope="row">Weight</th>
+                        <td>{{ record.width }}</td> <!-- Corrected field name -->
+                    </tr>
+                    <tr>
+                        <th scope="row">Address</th>
+                        <td>{{ record.addres }}</td> <!-- Corrected field name -->
+                    </tr>
+                    <tr>
+                        <th scope="row">Creation Date</th>
+                        <td>{{ record.created_at }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg" style="padding: 20px 80px 20px 80px;">Back to Dashboard</a>
+        </div>
+    </div>
+{% endblock %}

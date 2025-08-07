@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br><br>
+<div class="text-center">
+    <h1>Welcome to the CRM System</h1>
+    <br>
+    <h5><b>This is the main page of our CRM system. You can manage your customer relationships effectively.</b></h5>
+    <hr style="border-top: 3px solid #000; margin: 30px 180px;">
+
+    {% if user.is_authenticated %}
+        <h5>You are logged in as <strong>{{ user.username }}</strong>.</h5>
+        <h6>Access your <a href="{% url 'dashboard' %}" class="btn btn-outline-primary">Dashboard</a>.</h6>
+    {% else %}
+        <p>You are not logged in. Please log in or register to access the dashboard.</p>
+    {% endif %}
+</div>
+{% endblock %}
